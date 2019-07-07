@@ -1,0 +1,18 @@
+.calc-btn {
+	text-align: center;
+	background-color: gray;
+	border: 1px black;
+}
+
+.row {
+	display: table;
+	table-layout: fixed;
+}
+
+.column {
+	display: table-cell;
+}
+
+#display {
+	text-align: right;
+}
