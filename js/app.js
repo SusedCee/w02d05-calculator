@@ -15,33 +15,25 @@ var clearBtn = document.getElementById("clear");
 var displayElement = document.getElementById("display")
 
 
+var valueOnScreen = "0";
+var valueWaiting;
+var stringArray =[];
 
+var performNumberButtons = document.getElementsByClassName("calcbtn");
+var calcOperators = document.getElementByClassName("btnOperator");
 
+for(leti = 0; i < performNumberButtons.length; i++) {
+	performNumberButtons[i].addEventListener(click, updateDisplay, false);
+}
 
+for(leti = 0; i < performNumberButtons.length; i++) {
+	calcOperators[i].addEventListener(click, doOperation, false);	
+}
 
-
-
-
-
-
-
-
-     //function that display value 
-         // function dis(val) 
-         // { 
-         //     document.getElementById("result").value+=val 
-         // } 
-           
-         // //function that evaluates the digit and return result 
-         // function solve() 
-         // { 
-         //     let x = document.getElementById("result").value 
-         //     let y = eval(x) 
-         //     document.getElementById("result").value = y 
-         // } 
-           
-         // //function that clear the display 
-         // function clr() 
-         // { 
-         //     document.getElementById("result").value = "" 
-         // } 
+var updateDisplay = (clickSomething) => {
+	var btnInput = clickSomething.target.innerText;
+	if (displayValues === "0")
+		valueOnScreen = "";
+	displayValues += btnInput;
+	displayElement.innerText = valueOnScreen;
+}
