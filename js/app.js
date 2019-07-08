@@ -1,39 +1,52 @@
 console.log("hey");
 
-var oneBtn = document.getElementById("numberOne");
-var twoBtn = document.getElementById("numberTwo");
-var threeBtn = document.getElementById("numberThree");
-var fourBtn = document.getElementById("numberFour");
-var fiveBtn = document.getElementById("numberFive");
-var sixBtn = document.getElementById("numberSix");
-var sevenBtn = document.getElementById("numberSeven");
-var eightBtn = document.getElementById("numberEight");
-var nineBtn = document.getElementById("numberNine");
-var zeroBtn = document.getElementById("numberZero");
 var decimalBtn = document.getElementById("decimal")
 var clearBtn = document.getElementById("clear");
-var displayElement = document.getElementById("display")
-
+var displayElement = document.getElementById("display");
+var performNumberButtons = document.getElementsByClassName("btnNumber");
+var calcOperators = document.getElementsByClassName("btnOperator");
 
 var valueOnScreen = "0";
 var valueWaiting;
-var stringArray =[];
+var stringArray = [];
 
-var performNumberButtons = document.getElementsByClassName("calcbtn");
-var calcOperators = document.getElementByClassName("btnOperator");
 
-for(leti = 0; i < performNumberButtons.length; i++) {
-	performNumberButtons[i].addEventListener(click, updateDisplay, false);
+for (let i = 0; i < performNumberButtons.length; i++) {
+	performNumberButtons[i].addEventListener("click", updateDisplay, false);
 }
 
-for(leti = 0; i < performNumberButtons.length; i++) {
-	calcOperators[i].addEventListener(click, doOperation, false);	
+// for(let i = 0; i < performNumberButtons.length; i++) {    // switch????????? More info https://www.w3schools.com/js/js_switch.asp
+// 	calcOperators[i].addEventListener("click", doOperation, false);	
+// }
+
+var performTheMath = (clickObj) => {
+var operator = clickObj.target.innerText;
+
 }
 
-var updateDisplay = (clickSomething) => {
-	var btnInput = clickSomething.target.innerText;
-	if (displayValues === "0")
+
+var updateDisplay = (clickObj) => {
+	var btnText = clickObj.target.innerText;
+	if (valueOnScreen === "0")
 		valueOnScreen = "";
-	displayValues += btnInput;
+	valueOnScreen += btnText;
 	displayElement.innerText = valueOnScreen;
 }
+
+clearBtn.onClick = () => {
+	valueOnScreen = "0";
+	valueWaiting = undefined;
+	stringArray = [];
+	displayElement.innerHTML = valueOnScreen;
+}
+
+decimalBtn.onClick = () => {
+	if(!valueOnScreen.includes("."))
+		valueOnScreen += ".";
+		displayElement.innerText = valueOnScreen;
+}
+
+
+
+
+
