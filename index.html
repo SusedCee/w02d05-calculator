@@ -7,35 +7,31 @@
 <body>
     <h1>Calculator</h1>
     <div id="calculator"> 
-        <div class="row">
-            <form>
-            <input type="text" name="numberInputed" class="column" id="display">
-            <button class="calcbtn column" id="clear">C</button>
-        </form>
-        <div class="row">
-            <button class="calcbtn btnNumber" type="button" id="numberSeven">7</button>
-            <button class="calcbtn btnNumber" type="button" id="numberEight">8</button>
-            <button class="calcbtn btnNumber" type="button" id="numberNine">9</button> 
-            <button class="calcbtn btnOperator" type="button" id="multiply">*</button>
-         </div> 
-         <div class="row"> 
-            <button class="calcbtn btnNumber" type="button" id="numberFour">4</button> 
-            <button class="calcbtn btnNumber" type="button" id="numberFive">5</button> 
-            <button class="calcbtn btnNumber" type="button" id="numberSix">6</button> 
-            <button class="calcbtn btnOperator" type="button" id="subtract">-</button> 
-         </div> 
-         <div class="row"> 
-            <button class="calcbtn btnNumber" type="button" id="numberOne">1</button> 
-            <button class="calcbtn btnNumber" type="button" id="numberTwo">2</button> 
-            <button class="calcbtn btnNumber" type="button" id="numberThree">3</button>
-            <button class="calcbtn btnOperator" type="button" id="add">+</button> 
-         </div> 
-         <div class="row">  
-            <button class="calcbtn btnNumber" type="button" id="numberZero">0</button> 
-            <button class="calcbtn" type="button" id="decimal">.</button> 
-            <button class="calcbtn btnOperator" type="button" id="equals">=</button>
-            <button class="calcbtn btnOperator" type="button" id="divide">/</button>
-         </div> 
+        <div class="top">
+        <span class="clear">C</span>
+        <div class="screen"></div>
+    </div>
+    
+    <div class="buttons"> <!-- Span tag used to group inline-elements in a document. Since they are not buttons I have to edit them using csss. More information https://www.w3schools.com/tags/tag_span.asp -->
+        <!-- operators and other keys -->
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span class="operator">+</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span class="operator">-</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span class="operator">÷</span>
+        <span>0</span>
+        <span>.</span>
+        <span class="eval">=</span>
+        <span class="operator">x</span>
+    </div>
+</div>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/app.js"></script>

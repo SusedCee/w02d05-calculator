@@ -1,52 +1,55 @@
-console.log("hey");
+console.log("hey"); //with help from Miriam
 
-var decimalBtn = document.getElementById("decimal")
-var clearBtn = document.getElementById("clear");
-var displayElement = document.getElementById("display");
-var performNumberButtons = document.getElementsByClassName("btnNumber");
-var calcOperators = document.getElementsByClassName("btnOperator");
+var buttons = document.querySelectorAll('#calculator span');
+var operators = ['+', '-', 'x', '÷'];
+var decimalAdded = false;
 
-var valueOnScreen = "0";
-var valueWaiting;
-var stringArray = [];
+for(var i = 0; i < buttons.length; i++) {
+	buttons[i].onclick = function(e) {
+		var input = document.querySelector('.screen');
+		var inputVal = input.innerHTML;
+		var btnVal = this.innerHTML;
+		if(btnVal == 'C') {
+			input.innerHTML = '';
+			decimalAdded = false;
+		}
+		
+		else if(btnVal == '=') {
+			var equation = inputVal;
+			var lastChar = equation[equation.length - 1];
+			equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+			if(operators.indexOf(lastChar) > -1 || lastChar == '.')
+				equation = equation.replace(/.$/, '');
+			if(equation)
+				input.innerHTML = eval(equation);
+			decimalAdded = false;
+		}
 
+		else if(operators.indexOf(btnVal) > -1) {
 
-for (let i = 0; i < performNumberButtons.length; i++) {
-	performNumberButtons[i].addEventListener("click", updateDisplay, false);
+			var lastChar = inputVal[inputVal.length - 1];
+			
+			if(inputVal != '' && operators.indexOf(lastChar) == -1) 
+				input.innerHTML += btnVal;
+			else if(inputVal == '' && btnVal == '-') 
+				input.innerHTML += btnVal;
+			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+				input.innerHTML = inputVal.replace(/.$/, btnVal);
+			}
+			decimalAdded =false;
+		}
+		
+		else if(btnVal == '.') {
+			if(!decimalAdded) {
+				input.innerHTML += btnVal;
+				decimalAdded = true;
+			}
+		}
+
+		else {
+			input.innerHTML += btnVal;
+		}
+		
+		e.preventDefault();
+	} 
 }
-
-// for(let i = 0; i < performNumberButtons.length; i++) {    // switch????????? More info https://www.w3schools.com/js/js_switch.asp
-// 	calcOperators[i].addEventListener("click", doOperation, false);	
-// }
-
-var performTheMath = (clickObj) => {
-var operator = clickObj.target.innerText;
-
-}
-
-
-var updateDisplay = (clickObj) => {
-	var btnText = clickObj.target.innerText;
-	if (valueOnScreen === "0")
-		valueOnScreen = "";
-	valueOnScreen += btnText;
-	displayElement.innerText = valueOnScreen;
-}
-
-clearBtn.onClick = () => {
-	valueOnScreen = "0";
-	valueWaiting = undefined;
-	stringArray = [];
-	displayElement.innerHTML = valueOnScreen;
-}
-
-decimalBtn.onClick = () => {
-	if(!valueOnScreen.includes("."))
-		valueOnScreen += ".";
-		displayElement.innerText = valueOnScreen;
-}
-
-
-
-
-

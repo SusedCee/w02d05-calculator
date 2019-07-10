@@ -1,18 +1,39 @@
-.calc-btn {
+html {
+	height: 100%;
+}
+
+#calculator {
+	width: 325px;
+	height: auto;
+	margin: 100px auto;
+	padding: 20px 20px 9px;
+}
+
+/* Clear floats because they don't fit in the area. More information https://www.w3schools.com/css/css_overflow.asp*/
+.buttons, .top {overflow: hidden;}
+
+.buttons span, .top span.clear {
+	float: left;
+	position: relative;
+	top: 0;
+	width: 66px;
+	height: 36px;
+	background: grey;
+	margin: 0 7px 11px 0;
+	line-height: 36px;
 	text-align: center;
-	background-color: gray;
-	border: 1px black;
 }
 
-.row {
-	display: table;
-	table-layout: fixed;
+.buttons span.operator {
+	background: red;
+	margin-right: 0;
 }
 
-.column {
-	display: table-cell;
+.buttons span.eval {
+	background: yellow;
 }
 
-#display {
-	text-align: right;
+.top span.clear {
+	background: green;
+	color: white;
 }
