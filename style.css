@@ -2,6 +2,10 @@ html {
 	height: 100%;
 }
 
+h1 {
+	text-align: center;
+	margin: 20px 10px;
+}
 #calculator {
 	width: 325px;
 	height: auto;
@@ -14,8 +18,6 @@ html {
 
 .buttons span, .top span.clear {
 	float: left;
-	position: relative;
-	top: 0;
 	width: 66px;
 	height: 36px;
 	background: grey;
